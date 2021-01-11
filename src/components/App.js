@@ -8,13 +8,17 @@ import VideoDetail from './VideoDetail';
 class App extends Component {
   state = { videos: [], selectedVideo: null }
 
+  componentDidMount() {
+    this.onTermSubmit('Trucks');
+  }
+
   onTermSubmit = async (term) => {
     const response = await videoApi.get('/search', {
       params: {
         q: term
       }
     });
-    this.setState({ videos: response.data.items });
+    this.setState({ videos: response.data.items, selectedVideo: response.data.items[0] });
   }
 
   onVideoSelect = (video) => {
