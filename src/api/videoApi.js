@@ -5,6 +5,7 @@ export default axios.create({
   params: {
     part: 'snippet',
     maxResults: 5,
-    key: REACT_APP_KEY,
-  },
+    key: process.env.REACT_APP_KEY,
+    type: 'video',
+  }
 });
